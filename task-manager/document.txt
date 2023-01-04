@@ -1,0 +1,5 @@
+## MongoDB
+-> NoSQL, Non relational DB
+-> Store JSON
+-> Easy to get started
+-> Free Cloud Hosting - Atlas
