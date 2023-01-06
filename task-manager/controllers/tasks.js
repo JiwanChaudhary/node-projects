@@ -32,8 +32,20 @@ const getTask = async (req, res) => {
 const updateTask = (req, res) => {
     res.send('update task')
 }
-const deleteTask = (req, res) => {
-    res.send('delete task')
+const deleteTask = async (req, res) => {
+    try {
+        const { id: taskID } = req.params;
+        const task = await Task.findOneAndDelete({ _id: taskID });
+        if (!task) {
+            return res.status(404).json({ msg: `No task with id: ${taskID}` });
+        }
+        return res.status(200).json({ task })
+        // return res.status(200).send()
+        // return res.status(200).json({ task: null, status: 'success' })
+        // Yo mathi ko 2 ta way le ni garna sakinxa
+    } catch (error) {
+        res.status(500).json({ msg: error })
+    }
 }
 
 module.exports = {
