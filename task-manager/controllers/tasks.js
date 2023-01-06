@@ -29,9 +29,7 @@ const getTask = async (req, res) => {
     }
     res.json({ id: req.params.id })
 }
-const updateTask = (req, res) => {
-    res.send('update task')
-}
+
 const deleteTask = async (req, res) => {
     try {
         const { id: taskID } = req.params;
@@ -43,6 +41,23 @@ const deleteTask = async (req, res) => {
         // return res.status(200).send()
         // return res.status(200).json({ task: null, status: 'success' })
         // Yo mathi ko 2 ta way le ni garna sakinxa
+    } catch (error) {
+        res.status(500).json({ msg: error })
+    }
+}
+
+const updateTask = async (req, res) => {
+    try {
+        const { id: taskID } = req.params;
+        // res.status(200).json({ id: taskID, data: req.body })
+        const task = await Task.findByIdAndUpdate({ _id: taskID }, req.body, {
+            new: true,
+            runValidators: true,
+        })
+        if (!task) {
+            return res.status(404).json({ msg: `No task with id ${taskID}` })
+        }
+        return res.status(200).json({ task })
     } catch (error) {
         res.status(500).json({ msg: error })
     }
