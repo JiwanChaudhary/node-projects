@@ -3,6 +3,7 @@ const app = express();
 const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect')
 require('dotenv').config()
+const notFound = require('./middleware/not-found')
 
 //? Middleware
 app.use(express.static('./public'))
@@ -10,6 +11,8 @@ app.use(express.json())
 
 //? Route
 app.use('/api/v1/tasks', tasks)
+// Custom 404
+app.use(notFound)
 
 //* app.get('/api/v1/tasks')               - get all the tasks 
 //* app.post('/api/v1/tasks')              - create a new task 
