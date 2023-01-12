@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import { addUser } from "../services/api";
 
 const Container = styled(FormGroup)`
   width: 50%;
@@ -26,6 +27,7 @@ const inputValue = {
 
 const AddUser = () => {
   const [user, setUser] = useState(inputValue);
+
   useEffect(() => {
     console.log(user);
   });
@@ -34,7 +36,12 @@ const AddUser = () => {
     // console.log(e.target.name, e.target.value);
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
+    // Here, name and value is key value pair
     // console.log(user);
+  };
+
+  const onFormSubmit = async () => {
+    await addUser(user);
   };
 
   return (
@@ -64,7 +71,9 @@ const AddUser = () => {
           <Input onChange={onValueChange} name="phone" value={user.phone} />
         </FormControl>
         <FormControl>
-          <Button variant="contained">Add User</Button>
+          <Button variant="contained" onClick={onFormSubmit}>
+            Add User
+          </Button>
         </FormControl>
       </Container>
     </>
