@@ -24,3 +24,8 @@ schema validation
 npm install joi-password-complexity
 -> Keywords
 Joi validation password complexity
+
+#bcrypt
+-> A library to help you hash passwords.
+-> Install via NPM
+npm install bcrypt
