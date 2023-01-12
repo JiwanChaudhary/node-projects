@@ -4,7 +4,6 @@ const addUser = async (req, res) => {
     const userData = req.body;
     // console.log(userData);
     const addUser = new UserDetails(userData)
-
     try {
         await addUser.save()
         res.status(201).json({ addUser })
@@ -13,4 +12,13 @@ const addUser = async (req, res) => {
     }
 }
 
-module.exports = { addUser }
+const getUsers = async (req, res) => {
+    try {
+        const allUsers = await UserDetails.find({});
+        res.status(200).json({ allUsers });
+    } catch (error) {
+        res.status(404).json({ message: error.message })
+    }
+}
+
+module.exports = { addUser, getUsers }
