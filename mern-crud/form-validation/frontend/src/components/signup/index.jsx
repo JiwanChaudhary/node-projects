@@ -5,19 +5,23 @@ import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [error, setError] = useState("");
-  const [data, setData] = useState([
+  const userDetails = [
     {
       firstName: "",
       lastName: "",
       email: "",
       password: "",
     },
-  ]);
+  ];
+  const [data, setData] = useState(userDetails);
 
   const navigate = useNavigate();
 
-  const handleChange = ({ currentTarget: input }) => {
-    setData({ ...data, [input.name]: input.value });
+  const handleChange = (e) => {
+    // console.log(e.target.name);
+    // console.log(e.target.value);
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
   };
 
   const handleSubmit = async (e) => {
@@ -50,7 +54,7 @@ const SignUp = () => {
           </Link>
         </div>
         <div className={styles.right}>
-          <form className={styles.form_container} onSubmit={handleSubmit}>
+          <form className={styles.form_container}>
             <h1>Create Account</h1>
             <input
               type="text"
@@ -89,7 +93,11 @@ const SignUp = () => {
               className={styles.input}
             />
             {error && <div className={styles.error_msg}>{error}</div>}
-            <button type="submit" className={styles.green_btn}>
+            <button
+              type="submit"
+              className={styles.green_btn}
+              onSubmit={handleSubmit}
+            >
               Sign up
             </button>
           </form>
