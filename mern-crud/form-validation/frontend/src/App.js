@@ -1,7 +1,9 @@
+import SignUp from "./components/signup";
+
 function App() {
     return (
         <>
-            <div>hello world</div>
+            <SignUp />
         </>
     );
 }

@@ -4,6 +4,7 @@ import styles from "../signup/style.module.css";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const [error, setError] = useState("");
   const [data, setData] = useState([
     {
       firstName: "",
@@ -13,7 +14,7 @@ const SignUp = () => {
     },
   ]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -21,10 +22,20 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:5000/api/users";
-    const { data: res } = await axios.post(url, data);
-    navigate('/login')
-    console.log(res.message);
+    try {
+      const url = "http://localhost:5000/api/users";
+      const { data: res } = await axios.post(url, data);
+      navigate("/login");
+      console.log(res.message);
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+      }
+    }
   };
 
   return (
@@ -77,6 +88,7 @@ const SignUp = () => {
               required
               className={styles.input}
             />
+            {error && <div className={styles.error_msg}>{error}</div>}
             <button type="submit" className={styles.green_btn}>
               Sign up
             </button>
