@@ -2,7 +2,7 @@ const UserDetails = require('../model/userSchema');
 
 const addUser = async (req, res) => {
     const userData = req.body;
-    // console.log(userData);
+    console.log(userData);
     const addUser = new UserDetails(userData)
     try {
         await addUser.save()
@@ -15,6 +15,7 @@ const addUser = async (req, res) => {
 const getUsers = async (req, res) => {
     try {
         const allUsers = await UserDetails.find({});
+        // console.log(allUsers);
         res.status(200).json({ allUsers });
     } catch (error) {
         res.status(404).json({ message: error.message })

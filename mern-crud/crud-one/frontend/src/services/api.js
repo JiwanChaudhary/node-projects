@@ -17,3 +17,4 @@ export const getUsers = async () => {
         console.log('Error while using getUsers API', error);
     }
 }
+

@@ -20,7 +20,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const url = "http://localhost:5000/api/users";
-      const { data: res } = await axios.post(url, data);
+      const { data: res } = await axios.post(`${url}/login`, data);
+      console.log(data);
       localStorage.setItem("token", res.data);
       window.location = "/";
       //   console.log(res.message);
@@ -45,7 +46,7 @@ const Login = () => {
               type="email"
               placeholder="Email"
               name="email"
-              value={data.email}
+              value={data.email || ""}
               onChange={handleChange}
               required
               className={styles.input}
@@ -54,7 +55,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               name="password"
-              value={data.password}
+              value={data.password || ""}
               onChange={handleChange}
               required
               className={styles.input}

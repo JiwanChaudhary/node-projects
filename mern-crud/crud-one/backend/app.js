@@ -7,6 +7,9 @@ const connectDB = require('./db/connect');
 const routes = require('./routes/route');
 const PORT = 5000;
 
+// Middleware
+app.use(express.json())
+
 // body-parser is a package
 // Body-parser is a middleware package for Node.js that allows you to parse 
 // incoming request bodies in a middleware before your handlers, available under the req.body property.

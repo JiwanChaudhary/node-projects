@@ -7,7 +7,7 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { addUser } from "../services/api";
 
 const Container = styled(FormGroup)`
@@ -28,9 +28,9 @@ const inputValue = {
 const AddUser = () => {
   const [user, setUser] = useState(inputValue);
 
-  useEffect(() => {
-    console.log(user);
-  });
+  // useEffect(() => {
+  //   console.log(user);
+  // });
 
   const onValueChange = (e) => {
     // console.log(e.target.name, e.target.value);

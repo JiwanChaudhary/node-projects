@@ -29,6 +29,7 @@ const SignUp = () => {
     try {
       const url = "http://localhost:5000/api/users";
       const { data: res } = await axios.post(url, data);
+      console.log(data);
       navigate("/login");
       console.log(res.message);
     } catch (error) {
@@ -60,7 +61,7 @@ const SignUp = () => {
               type="text"
               placeholder="First Name"
               name="firstName"
-              value={data.firstName}
+              value={data.firstName || ""}
               onChange={handleChange}
               required
               className={styles.input}
@@ -69,7 +70,7 @@ const SignUp = () => {
               type="text"
               placeholder="Last Name"
               name="lastName"
-              value={data.lastName}
+              value={data.lastName || ""}
               onChange={handleChange}
               required
               className={styles.input}
@@ -78,7 +79,7 @@ const SignUp = () => {
               type="email"
               placeholder="Email"
               name="email"
-              value={data.email}
+              value={data.email || ""}
               onChange={handleChange}
               required
               className={styles.input}
@@ -87,7 +88,7 @@ const SignUp = () => {
               type="password"
               placeholder="Password"
               name="password"
-              value={data.password}
+              value={data.password || ""}
               onChange={handleChange}
               required
               className={styles.input}

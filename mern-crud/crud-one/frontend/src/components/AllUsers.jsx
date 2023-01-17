@@ -13,15 +13,17 @@ const AllUsers = () => {
 
   useEffect(() => {
     getAllUsers();
+    console.log(getAllUsers());
   }, [users]);
 
   const getAllUsers = async () => {
     let allUsers = await getUsers();
+    // let UserDetails = await allUsers.json();
     console.log(allUsers.data);
+    console.log(setUsers(async () => await allUsers.data));
     setUsers(allUsers.data);
-    console.log(setUsers(allUsers.data));
-    // console.log(users.length);
   };
+  // console.log(users.length);
   return (
     <Table>
       <TableHead>
@@ -35,7 +37,7 @@ const AllUsers = () => {
       </TableHead>
       <TableBody>
         {users.map((user) => (
-          <TableRow>
+          <TableRow key={user.id}>
             <TableCell>{user._id}</TableCell>
             <TableCell>{user.name}</TableCell>
             <TableCell>{user.username}</TableCell>
