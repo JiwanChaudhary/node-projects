@@ -55,4 +55,10 @@ const editUser = asyncWrapper(async (req, res) => {
     res.status(201).json(editUser)
 })
 
-module.exports = { addUser, getUsers, getUser, editUser }
+const deleteUser = asyncWrapper(async (req, res) => {
+    const id = req.params.id;
+    await UserDetails.deleteOne({ _id: id });
+    res.status(200).json({ message: 'User deleted Successfully' })
+})
+
+module.exports = { addUser, getUsers, getUser, editUser, deleteUser }
