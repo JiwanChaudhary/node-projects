@@ -8,6 +8,7 @@ import AddUser from './components/AddUser';
 import AllUsers from './components/AllUsers';
 import CodeforInterview from './components/CodeforInterview';
 import NavBar from './components/NavBar';
+import EditUser from './components/EditUser';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<CodeforInterview />} />
         <Route path='/allusers' element={<AllUsers />} />
         <Route path='/adduser' element={<AddUser />} />
+        <Route path='/edituser/:id' element={<EditUser />} />
       </Routes>
     </BrowserRouter>
   );

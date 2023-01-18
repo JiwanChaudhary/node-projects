@@ -18,3 +18,19 @@ export const getUsers = async () => {
     }
 }
 
+export const getUser = async (id) => {
+    try {
+        return await axios.get(`${URL}/${id}`)
+    } catch (error) {
+        console.log('Error while using getUser API', error);
+    }
+}
+
+export const editUser = async (user, id) => {
+    try {
+        return await axios.post(`${URL}/${id}`, user)
+    } catch (error) {
+        console.log('Error while using editUser API', error);
+    }
+}
+
