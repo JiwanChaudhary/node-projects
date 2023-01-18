@@ -18,7 +18,7 @@ const NavBar = () => {
     <>
       <Header position="static">
         <Toolbar>
-          <Tabs to="/">Code for interview</Tabs>
+          <Tabs to="/">CRUD operations</Tabs>
           <Tabs to="/allusers">All users</Tabs>
           <Tabs to="/adduser">Add user</Tabs>
         </Toolbar>

@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 //* Components 
 import AddUser from './components/AddUser';
 import AllUsers from './components/AllUsers';
-import CodeforInterview from './components/CodeforInterview';
+import CrudOperation from './components/CrudOperation';
 import NavBar from './components/NavBar';
 import EditUser from './components/EditUser';
 
@@ -16,7 +16,7 @@ function App() {
       {/* <h1>CRUD operation in MERN - The frontend part</h1> */}
       <NavBar />
       <Routes>
-        <Route path='/' element={<CodeforInterview />} />
+        <Route path='/' element={<CrudOperation />} />
         <Route path='/allusers' element={<AllUsers />} />
         <Route path='/adduser' element={<AddUser />} />
         <Route path='/edituser/:id' element={<EditUser />} />
