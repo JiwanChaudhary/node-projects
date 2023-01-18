@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { addUser } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled(FormGroup)`
   width: 50%;
@@ -25,7 +26,9 @@ const inputValue = {
   phone: "",
 };
 
+
 const AddUser = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(inputValue);
 
   // useEffect(() => {
@@ -42,6 +45,7 @@ const AddUser = () => {
 
   const onFormSubmit = async () => {
     await addUser(user);
+    navigate('/allusers')
   };
 
   return (
